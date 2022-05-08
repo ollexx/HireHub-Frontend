@@ -5,7 +5,7 @@ import Overview from "../Overview";
 import "./style.css";
 const TabsComponent = () => {
   return (
-    <Tabs>
+    <Tabs style={{ backgroundColor: "#262b34" }}>
       <TabList>
         <Tab>Overview</Tab>
         <Tab>Candidates</Tab>
