@@ -11,7 +11,7 @@ const TabsComponent = () => {
         <Tab>Candidates</Tab>
       </TabList>
 
-      <TabPanel>
+      <TabPanel className="OverviewContainerClass">
         <Overview />
       </TabPanel>
       <TabPanel>

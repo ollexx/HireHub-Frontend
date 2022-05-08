@@ -1,0 +1,26 @@
+.OverviewContainerClass {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  color: #fff;
+}
+
+.OverviewContainerClass .column {
+  width: 30%;
+}
+
+.droppable-col {
+  padding: 10px 10px 0 10px;
+  width: 100%;
+  background-color: gray;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+}
+
+.itemDrop {
+  margin-bottom: 10px;
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 7px;
+}
