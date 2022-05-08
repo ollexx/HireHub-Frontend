@@ -1,6 +1,7 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import Overview from "../Overview";
 import "./style.css";
 const TabsComponent = () => {
   return (
@@ -11,7 +12,7 @@ const TabsComponent = () => {
       </TabList>
 
       <TabPanel>
-        <h2>Any content 1</h2>
+        <Overview />
       </TabPanel>
       <TabPanel>
         <h2>Any content 2</h2>
