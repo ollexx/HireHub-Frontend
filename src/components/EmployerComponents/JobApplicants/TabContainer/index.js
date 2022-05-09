@@ -14,9 +14,7 @@ const TabsComponent = ({ isOpen }) => {
       <TabPanel className="OverviewContainerClass">
         <Overview />
       </TabPanel>
-      <TabPanel>
-        <h2>Any content 2</h2>
-      </TabPanel>
+      <TabPanel>loremEpsu,</TabPanel>
     </Tabs>
   );
 };
