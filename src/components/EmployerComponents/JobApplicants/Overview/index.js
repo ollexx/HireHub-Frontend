@@ -36,12 +36,25 @@ function Overview() {
     <DragDropContext onDragEnd={handleDragEnd} className="d-flex">
       {_.map(state, (data, key) => {
         return (
-          <div
-            className={"column"}
-            key="key"
-            // style={{ background: data.background }}
-          >
-            <h3>{data.title}</h3>
+          <div className={"column"} key="key">
+            <div className="d-flex align-items-center text-center justify-content-center">
+              <span className="width-15 height-15 bg-primary rounded mr-2"></span>
+              <h6
+                className="text-capitalize mb-0 text-center"
+                style={{ color: "#ccc" }}
+              >
+                {data.title}
+              </h6>
+              <span
+                className="rounded  px-2 py-1 d-inline-flex align-items-center justify-content-center"
+                style={{
+                  backgroundColor: "#1c1f26",
+                  color: "#6c757d!important",
+                }}
+              >
+                {data.items.length}
+              </span>
+            </div>
             <Droppable droppableId={key}>
               {(provided) => {
                 return (
