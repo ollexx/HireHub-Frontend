@@ -5,8 +5,20 @@ import _ from "lodash";
 import "./style.css";
 import ReactRoundedImage from "react-rounded-image";
 import Profile from "../../../../images/profile.jpg";
+import { ApplicantModal } from "../Candidates/Modal/modal";
 
 function Overview() {
+  const [showModal, setShowModal] = useState(false);
+  const [modalId, setModalId] = useState(null);
+
+  const openModal = (id) => {
+    setModalId(id);
+    setShowModal((prev) => !prev);
+  };
+
+  const closeModel = () => {
+    setShowModal(false);
+  };
   const [state, setState] = useState(Applicants);
   const handleDragEnd = ({ destination, source }) => {
     if (!destination) {
@@ -78,7 +90,11 @@ function Overview() {
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
                               >
-                                <div className="card-body-drag">
+                                <div
+                                  className="card-body-drag"
+                                  id={el.username + "div"}
+                                  onClick={() => openModal(el.username)}
+                                >
                                   <div className="d-flex align-items-center justify-content-around">
                                     <div className="mr-2 avatars-w-50">
                                       <ReactRoundedImage
@@ -91,10 +107,10 @@ function Overview() {
                                       />
                                     </div>
                                     <div>
-                                      <p class="mb-0 text-primary">
+                                      <p className="mb-0 text-primary">
                                         {el.full_name}
                                       </p>
-                                      <small class="text-muted">
+                                      <small className="text-muted">
                                         {el.email}
                                       </small>
                                     </div>
@@ -114,6 +130,9 @@ function Overview() {
           </div>
         );
       })}
+      {showModal && (
+        <ApplicantModal showModal={showModal} setShowModal={closeModel} />
+      )}
     </DragDropContext>
   );
 }
