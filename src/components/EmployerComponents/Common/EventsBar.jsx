@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { AiOutlineUser, AiOutlinePlus, AiTwotoneDelete } from "react-icons/ai";
 import { FiClock } from "react-icons/fi";
 import { MdOutlineClear } from "react-icons/md";
@@ -37,13 +37,7 @@ function EventsBar({ isOpen }) {
   };
 
   return (
-    <motion.div
-      className="eventsBar"
-      animate={{
-        width: isOpen ? "28%" : "30%",
-        transition: { duration: 0.5, type: "spring", damping: 10 },
-      }}
-    >
+    <div className="eventsBar" style={{ width: "30%" }}>
       <div className="EventsContainer">
         <div className="headTitleSection">
           <h5 className="titleStyle">Your events</h5>
@@ -224,7 +218,7 @@ function EventsBar({ isOpen }) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

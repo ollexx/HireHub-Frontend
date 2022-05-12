@@ -36,11 +36,21 @@ import { FiSearch } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiTimeFive, BiHome, BiDollar, BiUser, BiMap } from "react-icons/bi";
 import EventsBar from "../Common/EventsBar";
+import { motion } from "framer-motion";
 
 function Dashboard({ isOpen }) {
   return (
-    <div className="sideContent">
-      <DashboardContainer className="col-lg-7 col-xl-8 mb-4 mb-lg-0">
+    <motion.div
+      className="sideContent"
+      animate={{
+        maxWidth: isOpen ? "82%" : "92%",
+        transition: { duration: 0.5, type: "spring", damping: 10 },
+      }}
+    >
+      <DashboardContainer
+        className="col-lg-7 col-xl-8 mb-4 mb-lg-0"
+        style={{ width: "66%" }}
+      >
         <HeadContainer>
           <UpperHead className="d-flex  justify-content-between">
             <Title className="mb-0">Dashboard</Title>
@@ -654,7 +664,7 @@ function Dashboard({ isOpen }) {
         </JobsContainerRow>
       </DashboardContainer>
       <EventsBar isOpen={isOpen} />
-    </div>
+    </motion.div>
   );
 }
 

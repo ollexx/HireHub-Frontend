@@ -1,3 +1,10 @@
+.CandidateContainer {
+  margin-top: 6rem;
+  min-height: 80vh;
+  margin-bottom: 2.9rem;
+  margin-left: auto !important;
+  margin-right: 0.5rem;
+}
 table {
   table-layout: fixed;
   word-wrap: break-word;
@@ -9,38 +16,34 @@ th {
   vertical-align: top !important;
   text-align: center !important;
   width: 0;
-  border-color: #1C1E27;
+  border-color: #1c1e27;
   width: max-content !important;
 }
 
- td {
+td {
   width: 0;
   text-align: center;
   padding: 1.5rem 1rem !important;
   vertical-align: middle !important;
   width: max-content !important;
- 
 }
 
-.table>:not(caption)>*>*{
-  border-color: #1C1E27;
+.table > :not(caption) > * > * {
+  border-color: #1c1e27;
 }
 
-thead{
-  /* border-color: #1C1E27 !important; */
-  /* border-color: #1C1E27; */
-  border-bottom: 2px solid #1C1E27 !important;
+thead {
+  border-bottom: 2px solid #1c1e27 !important;
 }
 
-.react-tabs::-webkit-scrollbar {
+/* .react-tabs::-webkit-scrollbar {
   height: 6px;
   width: 6px;
-  /* visibility: hidden; */
+
 }
 
 .OverviewContainerClass::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  /* visibility: hidden; */
   height: 6px;
   width: 6px;
 }
@@ -55,8 +58,8 @@ thead{
 
 .OverviewContainerClass:hover .OverviewContainerClass::-webkit-scrollbar-track {
   visibility: visible;
-}
+} */
 
-.react-tabs__tab-panel--selected{
+.react-tabs__tab-panel--selected {
   overflow-x: auto !important;
 }
