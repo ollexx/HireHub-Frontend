@@ -45,7 +45,9 @@ function Dashboard({ isOpen }) {
       animate={{
         maxWidth: isOpen ? "82%" : "90%",
         marginLeft: isOpen ? "16rem" : "7rem",
-        transition: { duration: 0.5, type: "spring", damping: 9 },
+        // maxWidth: isOpen ? "82%" : "91%",
+        // marginLeft: isOpen ? "5rem !important" : "",
+        transition: { duration: 0.5, type: "spring", damping: 10 },
       }}
     >
       <DashboardContainer
