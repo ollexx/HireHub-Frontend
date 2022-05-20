@@ -14,7 +14,7 @@ import {
   NavBtnLink,
 } from "./NavbarElements";
 
-const Navbar = ({ toggle }) => {
+const AuthNavbar = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);
 
   const changeNav = () => {
@@ -44,7 +44,7 @@ const Navbar = ({ toggle }) => {
             <MobileIcon onClick={toggle}>
               <FaBars />
             </MobileIcon>
-            <NavMenu>
+            {/* <NavMenu>
               <NavItem>
                 <NavLinks
                   to="about"
@@ -93,9 +93,10 @@ const Navbar = ({ toggle }) => {
                   Explore
                 </NavLinks>
               </NavItem>
-            </NavMenu>
+            </NavMenu> */}
             <NavBtn>
-              <NavBtnLink to="/login">Sign In</NavBtnLink>
+              <NavBtnLink to="/reg">Register</NavBtnLink>
+              <NavBtnLink to="/login">Login</NavBtnLink>
             </NavBtn>
           </NavbarContainer>
         </Nav>
@@ -104,4 +105,4 @@ const Navbar = ({ toggle }) => {
   );
 };
 
-export default Navbar;
+export default AuthNavbar;

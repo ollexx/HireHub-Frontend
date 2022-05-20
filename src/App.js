@@ -11,6 +11,10 @@ import SetAvatar from "./pages/SetAvatar";
 import VideoCall from "./components/Meeting/VideoCall";
 import Seeker from "./pages/Seeker";
 import Employer from "./pages/Employer";
+import Code_sent from "./pages/code_sent";
+import EmailVerified from "./components/Common/Email/EmailVerified";
+
+import Auth from "./pages/Auth";
 // import VideoApp from "./components/videoCall";
 
 function App() {
@@ -20,9 +24,10 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
 
-        <Route exact path="/signin" element={<SigninPage />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/auth/*" element={<Auth />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/verified" element={<EmailVerified />} />
         <Route path="/setAvatar" element={<SetAvatar />} />
         <Route
           path="/chat"
@@ -36,6 +41,7 @@ function App() {
 
         <Route exact path="/applicant/*" element={<Seeker />} />
         <Route exact path="/employer/*" element={<Employer />} />
+        <Route exact path="/codesent/:id" element={<Code_sent />} />
       </Routes>
       <ToastContainer autoClose={500} />
     </div>
