@@ -5,12 +5,12 @@ import {
   renderButton,
   renderText,
   renderSelectSector,
-  renderSelectSectorApp,
 } from "../../DisplayComponent";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import { Button, IconButton, TextField } from "@mui/material";
 import RemoveButton from "@material-ui/icons/Remove";
 import AddButton from "@material-ui/icons/Add";
+import { v4 as uuid } from "uuid";
 
 export default function AdditionlInfo({
   state,
@@ -22,6 +22,7 @@ export default function AdditionlInfo({
   handleOnSkillChange,
   handleRemoveSkill,
   handleAddSkill,
+  setProfile,
 }) {
   if (state.data.type == "Company")
     return (
@@ -75,14 +76,16 @@ export default function AdditionlInfo({
             <input
               accept="image/*"
               id="raised-button-file"
-              multiple
               type="file"
+              onChange={(e) => {
+                setProfile(e.target.files[0]);
+              }}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <label htmlFor="raised-button-file">
               <Button variant="outlined" component="span" color="secondary">
-                Upload
+                Upload Your Profile Picture
               </Button>
             </label>
           </Grid>
@@ -140,15 +143,16 @@ export default function AdditionlInfo({
           <Grid item xs={12}>
             {state.data.skillSet.map((skills, index) => {
               return (
-                <div key={index} style={{ display: "flex" }}>
+                <div style={{ display: "flex", marginBottom: "1rem" }}>
                   <TextField
+                    size="small"
                     name="skill"
                     label="Skill"
                     value={skills.skill}
                     onChange={(e) => {
                       handleOnSkillChange(e, index);
                     }}
-                    style={{ width: "90%" }}
+                    style={{ width: "90%", textTransform: "capitalize" }}
                   />
                   <IconButton onClick={() => handleRemoveSkill(index)}>
                     <RemoveButton />
@@ -173,6 +177,25 @@ export default function AdditionlInfo({
               value={state.data.summary}
               onChange={handleOnChange}
             />
+          </Grid>
+        </Grid>
+        <Grid container spacing={2} style={{ marginTop: "1rem" }}>
+          <Grid item xs={12} sm={6}>
+            <input
+              accept="image/*"
+              id="raised-button-file"
+              type="file"
+              onChange={(e) => {
+                setProfile(e.target.files[0]);
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <label htmlFor="raised-button-file">
+              <Button variant="outlined" component="span" color="secondary">
+                Upload Your Profile Picture
+              </Button>
+            </label>
           </Grid>
         </Grid>
 
