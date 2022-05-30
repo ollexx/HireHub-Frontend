@@ -1,23 +1,23 @@
+import Skeleton from "@mui/material/Skeleton";
 import React, { useState } from "react";
-import { Button } from "../../ButtonElement";
 import {
   ArrowForward,
   ArrowRight,
 } from "../../OnboardingPageComponents/HeroSection/HeroElements";
 import {
-  SectionContainer,
-  ContentHolder,
-  ColoredTitle,
-  JobInfoTitle,
-  TextContentSection,
-  JobInfoSub,
-  UnStyled,
-  ButtonGroup,
-  CompanyButton,
   ApplyButton,
+  ButtonGroup,
+  ColoredTitle,
+  CompanyButton,
+  ContentHolder,
+  JobInfoSub,
+  JobInfoTitle,
+  SectionContainer,
+  TextContentSection,
+  UnStyled,
 } from "./Components";
 
-function JobInfoSection() {
+function JobInfoSection({ job, isLoading }) {
   const [hover, setHover] = useState(false);
   const onHover = () => setHover(!hover);
   return (
@@ -25,29 +25,54 @@ function JobInfoSection() {
       <ContentHolder>
         <TextContentSection>
           <JobInfoTitle>
-            <ColoredTitle>Senior Backend Developer </ColoredTitle>
+            <ColoredTitle>{isLoading ? <Skeleton /> : job.title}</ColoredTitle>
             <ColoredTitle>
-              <UnStyled>at</UnStyled> Apple Inc.
+              <UnStyled>at</UnStyled>{" "}
+              <ColoredTitle>
+                {isLoading ? <Skeleton /> : job.company.name}
+              </ColoredTitle>
             </ColoredTitle>
           </JobInfoTitle>
           <JobInfoSub>
-            Contrary to popular belief, Lorem Ipsum is not simply random text.
-            It has roots in a piece of classical Latin literature from 45 BC,
-            making it over 2000 years old. Richard McClintock, a Latin professor
-            at Hampden-Sydney College in Virginia,
+            {isLoading ? (
+              <Skeleton variant="rectangular" height="15vh" />
+            ) : (
+              job.about
+            )}
           </JobInfoSub>
         </TextContentSection>
         <ButtonGroup>
-          <CompanyButton>View Company</CompanyButton>
-          <ApplyButton
-            to="/applicant/home"
-            onMouseEnter={onHover}
-            onMouseLeave={onHover}
-            primary="true"
-            dark="true"
+          <CompanyButton
+            onClick={(event) => {
+              window.location.href = `/applicant/company/${job.company._id}`;
+            }}
           >
-            Apply {hover ? <ArrowForward /> : <ArrowRight />}
-          </ApplyButton>
+            View Company
+          </CompanyButton>
+          {isLoading ? (
+            <Skeleton variant="rectangular">
+              <ApplyButton
+                onMouseEnter={onHover}
+                onMouseLeave={onHover}
+                primary="true"
+                dark="true"
+              >
+                Apply {hover ? <ArrowForward /> : <ArrowRight />}
+              </ApplyButton>
+            </Skeleton>
+          ) : (
+            <ApplyButton
+              onClick={(event) => {
+                window.location.href = `/applicant/company/${job.company._id}`;
+              }}
+              onMouseEnter={onHover}
+              onMouseLeave={onHover}
+              primary="true"
+              dark="true"
+            >
+              Explore {hover ? <ArrowForward /> : <ArrowRight />}
+            </ApplyButton>
+          )}
         </ButtonGroup>
       </ContentHolder>
     </SectionContainer>

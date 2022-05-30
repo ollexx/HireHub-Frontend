@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SectionContainer = styled.div`
   width: 100%;
-  height: 450px;
+  min-height: 450px;
   background-color: #3dbeee;
   padding-top: 6rem;
 `;
@@ -15,7 +15,7 @@ export const ContentHolder = styled.div`
 
 export const TextContentSection = styled.div`
   padding-top: 3rem;
-  text-align: left;
+  text-align: justify;
 `;
 
 export const JobInfoTitle = styled.p`
@@ -47,10 +47,15 @@ export const ButtonGroup = styled.div`
 
 export const CompanyButton = styled.button`
   padding: 12px 30px;
-  background-color: white;
+  background-color: orange;
   outline: #423edd;
   border: none;
   border-radius: 50px;
+  color: white;
+
+  &:hover {
+    background-color: #423edd;
+  }
 `;
 
 export const ApplyButton = styled.button`
@@ -60,4 +65,8 @@ export const ApplyButton = styled.button`
   border: none;
   border-radius: 50px;
   color: white;
+
+  &:hover {
+    background-color: orange;
+  }
 `;

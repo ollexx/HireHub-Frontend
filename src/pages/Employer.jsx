@@ -1,33 +1,135 @@
-import React, { useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import Footer from "../components/Common/Footer";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Candidates from "../components/EmployerComponents/Candidates";
-import EventsBar from "../components/EmployerComponents/Common/EventsBar";
+import Careers from "../components/EmployerComponents/Career";
 import Navbar from "../components/EmployerComponents/Common/Navbar";
 import Sidebar from "../components/EmployerComponents/Common/Sidebar";
 import Dashboard from "../components/EmployerComponents/Dashboard";
 import JobApplicants from "../components/EmployerComponents/JobApplicants";
-import "./Employer.css";
 import { Applicants } from "../components/EmployerComponents/JobApplicants/Overview/Constants";
-import Careers from "../components/EmployerComponents/Career";
+import { getCompanyJobDetail } from "../utils/APIRoutes";
+import "./Employer.css";
 
 export default function Employer() {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const navigate = useNavigate();
+  const [currUser, setCurrUser] = useState("");
+  var cu, com;
+  const toastOptions = {
+    position: "bottom-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
+
+  const [loading, setLoading] = useState(true);
+  var [jobInfo, setJobInfo] = useState([]);
+  const [selectedJob, setSelectedJob] = useState([]);
+
+  useEffect(() => {
+    if (loading)
+      axios
+        .get(getCompanyJobDetail, {
+          params: {
+            user: com._id,
+          },
+        })
+        .then((result) => {
+          // console.log(result.data.data);
+          for (var info in result.data.data) {
+            var comp = result.data.data[info].data;
+            var applicants = {};
+            //filter new applicants
+            applicants.New = comp.applicants.filter(
+              (applicant) => applicant.status === "New"
+            );
+            applicants.Shortlist = comp.applicants.filter(
+              (applicant) => applicant.status === "Shortlist"
+            );
+            applicants.Interview = comp.applicants.filter(
+              (applicant) => applicant.status === "Interview"
+            );
+            applicants.Negotiation = comp.applicants.filter(
+              (applicant) => applicant.status === "Negotiation"
+            );
+            applicants.TaskPhase = comp.applicants.filter(
+              (applicant) => applicant.status === "Task Phase"
+            );
+            applicants.Hired = comp.applicants.filter(
+              (applicant) => applicant.status === "Hired"
+            );
+            applicants.Disqualified = comp.applicants.filter(
+              (applicant) => applicant.status === "Disqualified"
+            );
+            applicants.Rejected = comp.applicants.filter(
+              (applicant) => applicant.status === "Rejected"
+            );
+            setJobInfo((oldArray) => [
+              ...oldArray,
+              { job: comp, applicants: applicants },
+            ]);
+          }
+          setLoading(false);
+          // setSelectedJob(jobInfo[0]);
+        });
+  }, []);
+
+  // useEffect(() => {
+  // if (localStorage.getItem("company") === null) {
+  //   navigate("/auth/login");
+  //   localStorage.clear();
+  // }
+  // const { data } = axios.post(getCompanyData, {
+  //   id: com._id,
+  // });
+  // if (data.status === false) {
+  //   toast.error(data.msg, toastOptions);
+  // } else {
+  // com = data.data;
+  // }
+  // }, []);
+
+  if (localStorage.getItem("user")) {
+    cu = JSON.parse(localStorage.getItem("user"));
+    com = JSON.parse(localStorage.getItem("company"));
+
+    // if (currUser.type === "Applicant") {
+    //   navigate("/applicant/home");
+    // }
+  }
+  //  else {
+  //   navigate("/auth/login");
+  // }
+
   return (
     <>
       <div className="main-container">
-        <Navbar />
+        <Navbar user={cu} company={com} loading={loading} jobInfo={jobInfo} />
         <Sidebar isOpen={isOpen} toggle={toggle} />
 
         <Routes>
           <Route
             path="/dashboard"
-            element={<Dashboard id="dashboard" isOpen={isOpen} />}
+            element={
+              <Dashboard
+                id="dashboard"
+                isOpen={isOpen}
+                // company={com._id}
+                loading={loading}
+                jobInfo={jobInfo}
+                company={com}
+                setSelectedJob={setSelectedJob}
+              />
+            }
           />
           <Route
-            path="/dashboard/job-post/:id"
-            element={<JobApplicants isOpen={isOpen} />}
+            path="/dashboard/job-post/"
+            element={
+              <JobApplicants isOpen={isOpen} selectedJob={selectedJob} />
+            }
           />
           <Route
             path="/candidates"
@@ -41,7 +143,9 @@ export default function Employer() {
           />
           <Route
             path="/career"
-            element={<Careers id="dashboard" isOpen={isOpen} />}
+            element={
+              <Careers id="dashboard" isOpen={isOpen} user={cu} company={com} />
+            }
           />
         </Routes>
       </div>
