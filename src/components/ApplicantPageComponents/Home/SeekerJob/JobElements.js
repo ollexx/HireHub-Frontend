@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const JobsContainer = styled.div`
-  height: 900px;
+  /* height: 900px; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -9,6 +9,7 @@ export const JobsContainer = styled.div`
   align-items: center;
   background: #010606;
   background-color: transparent;
+  backdrop-filter: blur(100px);
 
   @media screen and (max-width: 768px) {
     height: 1100px;
@@ -26,7 +27,7 @@ export const ContentHolder = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
+  /* position: absolute; */
 `;
 
 export const TitleHolder = styled.div`
@@ -46,19 +47,22 @@ export const JobCardsHoler = styled.div`
 export const JobCard = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: rgb(255, 254, 254);
+  background-color: rgba(255, 254, 254, 0.2);
   box-shadow: 7px 7px 22px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 7px 7px 22px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 7px 7px 22px 0px rgba(0, 0, 0, 0.75);
   padding: 0 1rem;
   max-width: 25%;
+  min-height: 307.5px;
   justify-content: space-between;
-  transition: box-shadow 0.3s ease-in;
+  transition: all 0.3s ease-in;
   margin: 1rem;
   cursor: pointer;
   &:hover {
+    transform: scale(1.1);
     box-shadow: 1px 8px 20px rgba(69, 65, 221, 0.75);
-    transition: box-shadow 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    color: whitesmoke;
   }
 `;
 
@@ -67,20 +71,19 @@ export const CompanyInfoHoler = styled.div`
   grid-template-columns: [image-row] 1fr [content-row] 6fr;
   width: 100%;
   justify-content: space-between;
-  background-color: white;
   padding: 1rem 2rem;
   text-align: center;
 
   padding-left: 0;
-  transition: all 0.2s ease-in-out;
+  /* transition: all 0.2s ease-in-out; */
 
   .box1 {
     grid-column-start: image-row;
-    transition: all 0.2s ease-in-out;
+    /* transition: all 0.2s ease-in-out; */
   }
   .box2 {
     grid-column-start: content-row;
-    transition: all 0.2s ease-in-out;
+    /* transition: all 0.2s ease-in-out; */
     margin-left: 0.5rem;
 
     h6 {
@@ -89,7 +92,7 @@ export const CompanyInfoHoler = styled.div`
     }
 
     p {
-      transition: all 0.2s ease-in-out;
+      /* transition: all 0.2s ease-in-out; */
       text-align: left;
       font-size: 14px;
       margin: 0;
@@ -108,7 +111,7 @@ export const JobTitle = styled.h4`
 
 export const JobType = styled.p`
   font-size: 15px;
-  color: gray;
+  /* color: gray; */
   font-family: "Encode Sans Expanded", sans-serif;
 `;
 
@@ -123,7 +126,7 @@ export const JobDescription = styled.p`
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  color: rgb(112, 137, 157);
+  /* color: rgb(112, 137, 157); */
   font-family: "Source Sans Pro", sans-serif;
 `;
 
@@ -145,7 +148,7 @@ export const ApplyButton = styled.button`
   border: none;
   outline: none;
   color: rgb(69, 65, 221);
-  background-color: #f8f6fe;
+  background-color: transparent;
   padding: 0.2rem 0.5rem;
   transition: all 0.3s ease-in-out;
 
