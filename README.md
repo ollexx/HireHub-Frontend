@@ -1,51 +1,19 @@
 
-# Project Title
+# HireHub
 
 HireHub is a complete job requirtment and hiring solution. This application offers solutions best focused in simpliflying hiring process. The features of this site are:
 
-⚫ Allows recruiters to post for job vaccancies
+⚪ Allows recruiters to post for job vaccancies
 
-⚫ Allows Candidates to apply for the post
+⚪ Allows Candidates to apply for the post
 
-⚫ Allows for the shortlisting of candidates
+⚪ Allows for the shortlisting of candidates
 
-⚫ Notification for various stages of application
+⚪ Notification for various stages of application
 
-⚫ Real time chat with the candidates
+⚪ Real time chat with the candidates
 
-⚫ Events And Todos for Users
-
-
-## Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/Chirag123-bit/HireHub-Frontend.git
-```
-
-Go to the project directory
-
-```bash
-  cd HireHub-Frontend
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm start
-```
-
-
-## Authors
-
-- [@chirag123-bit](https://www.github.com/Chirag123-bit)
+⚪ Events And Todos for Users
 
 
 ## Screenshots
@@ -75,6 +43,38 @@ Start the server
 ![App Screenshot](Screenshots/23.png)
 ![App Screenshot](Screenshots/24.png)
 ![App Screenshot](Screenshots/25.png)
+
+
+## Authors
+
+- [@chirag123-bit](https://www.github.com/Chirag123-bit)
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/Chirag123-bit/HireHub-Frontend.git
+```
+
+Go to the project directory
+
+```bash
+  cd HireHub-Frontend
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm start
+```
 
 
 ## Running Tests
